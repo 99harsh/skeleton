@@ -1,5 +1,5 @@
-require "./lib/code_kata_2.rb"
-require "test_helper"
+require './lib/code_kata_2.rb'
+require 'test_helper'
 
 class TestCodeKata2 < Minitest::Test
     def test_1

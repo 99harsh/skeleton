@@ -1,4 +1,4 @@
-require "./lib/code_kata_1.rb"
+require './lib/code_kata_1.rb'
 require 'test_helper'
 
 class TestFizzBuzz < Minitest::Test
