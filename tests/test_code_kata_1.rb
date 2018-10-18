@@ -1,5 +1,5 @@
 require "./lib/code_kata_1.rb"
-require 'minitest/autorun'
+require 'test_helper'
 
 class TestFizzBuzz < Minitest::Test
 
