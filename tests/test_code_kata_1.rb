@@ -1,7 +1,7 @@
 require "./lib/code_kata_1.rb"
-require "test/unit"
+require 'minitest/autorun'
 
-class TestFizzBuzz < Test::Unit::TestCase
+class TestFizzBuzz < Minitest::Test
 
   def test_print_fizz_buzz_1
     result = FizzBuzz.print_fizz_buzz 1
