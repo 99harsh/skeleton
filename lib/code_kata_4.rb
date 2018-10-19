@@ -11,6 +11,8 @@ node = Node('root', Node('left', Node('left.left')), Node('right'))
 assert deserialize(serialize(node)).left.left.val == 'left.left'
 =end
 
+require 'json'
+
 class Node
     attr_accessor :val, :left, :right
     
@@ -21,8 +23,26 @@ class Node
     end
 
     def serialize
+        Node.to_h(self).to_json
     end
 
-    def deserialize
+    def self.to_h node
+        h = {}
+        h[:val] = node.val if node.val
+        h[:left] = Node.to_h node.left if node.left
+        h[:right] = Node.to_h node.right if node.right
+        h
+    end
+
+    def self.to_node h
+        node = Node.new( val: h[:val] ) unless h.empty?
+        node.left = Node.to_node h[:left] unless h[:left].nil?
+        node.right = Node.to_node h[:right] unless h[:right].nil?
+        return node unless h.empty?
+        return nil
+    end
+
+    def self.deserialize s
+        Node.to_node JSON.parse(s, {symbolize_names: true})
     end
 end
